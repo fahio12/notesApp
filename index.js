@@ -19,6 +19,7 @@ app.set("view engine",".hbs")
 
 // Routes
 app.use(require("./routes/home"))
+app.use(require("./routes/notes"))
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
