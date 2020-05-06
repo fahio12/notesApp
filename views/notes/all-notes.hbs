@@ -1,1 +1,59 @@
 {{>sidenav}}
+
+<div class="container" style="margin-left:350px;margin-top:25px">
+  <h1 style="color:#272d2d">Notes</h1>
+  <div class="row" style="height:318px">
+    <div class="col-4">
+      <div class="card" style=" margin-top: 25px;width: 100%;height: height:100%;max-height: 318px">
+        <div class="card-body" style="height:318px;">
+          <a style="cursor: pointer;" data-toggle="modal" data-target="#newNote">
+            <h2 class="card-title centered text-primary" style=" top: 50%;font-size:300%"><u>New</u></h2>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="newNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">New Note</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/notes/new" method="post">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" id="name" maxlength="30" placeholder="Enter Name" required>
+            </div>
+            <div class="form-group">
+              <label for="Time">Time</label>
+              <input type="time" class="form-control" name="time"id="Time" placeholder="Enter Time">
+            </div>
+            <div class="form-group">
+              <label for="Date">Date</label>
+              <input type="date" class="form-control" name="date"id="Date" placeholder="Enter Date">
+            </div>
+            <div class="form-group">
+              <label for="Location">Location</label>
+              <input type="text" class="form-control" name="location"id="Location" maxlength="50" placeholder="Enter Location">
+            </div>
+            <div class="form-group">
+              <label for="Description">Description</label>
+              <textarea class="form-control" id="Description" name="description" rows="3" maxlength="500"></textarea>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
