@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// var DateOnly = require('mongoose-dateonly')(mongoose);
+var DateOnly = require('mongoose-dateonly')(mongoose);
 const {Schema}  = mongoose;
 
 const NoteSchema = new Schema({
@@ -7,12 +7,13 @@ const NoteSchema = new Schema({
     type:String,
     required: true
   },
-  Time: {
+  time: {
     type:String,
     required: false
   },
+  // saves one day b4 check l8er
   date: {
-    type:Date,
+    type:DateOnly,
     required: false
   },
   location: {
@@ -25,6 +26,11 @@ const NoteSchema = new Schema({
   },
   author: {
     type:String,
+    required:true
+  },
+  deleted:{
+    type: Boolean,
+    default:false,
     required:true
   }
 });

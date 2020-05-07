@@ -1,17 +1,20 @@
 const express = require("express")
+var DateOnly = require('mongoose-dateonly')
 const router = express.Router()
 
 const Note = require("../models/Note")
 
-router.get("/notes",function(req,res){
-  console.log(req.sessionID);
-
-  res.render("notes/all-notes")
+router.get("/notes",async function(req,res){
+  currentUser = req.sessionID
+  notes = await Note.find({author:currentUser,deleted:false})
+  res.render("notes/all-notes",{notes})
 })
 router.post("/notes/new",async function(req,res){
-  const body = req.body
+  var body = req.body
   newNote = new Note(body);
-
+  newNote.author = req.sessionID
+  await newNote.save();
+  console.log("Note saved!")
   res.redirect("/notes")
 })
 module.exports = router
