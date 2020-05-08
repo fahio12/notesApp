@@ -17,4 +17,8 @@ router.post("/notes/new",async function(req,res){
   console.log("Note saved!")
   res.redirect("/notes")
 })
+router.post("/notes/delete/:id",async function(req,res){
+  await Note.findByIdAndUpdate(req.params.id, {deleted: true});
+  res.redirect("/notes")
+})
 module.exports = router
