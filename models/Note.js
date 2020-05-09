@@ -11,9 +11,9 @@ const NoteSchema = new Schema({
     type:String,
     required: false
   },
-  // saves one day b4 check l8er
   date: {
-    type:DateOnly,
+    type:String,
+    default: Date.now,
     required: true
   },
   location: {
