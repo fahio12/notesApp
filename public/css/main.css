@@ -30,8 +30,16 @@
   display: block;
   transition: 0.3s;
   font-family: 'Roboto', sans-serif;
-
+  
 }
+.sidenav .active{
+  color:#272D2D;
+  background-color:#23CE6B;
+}
+.sidenav .active:hover{
+  color:Black;
+}
+
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
