@@ -2,7 +2,7 @@
 
 <div class="container" style="margin-left:350px;margin-top:25px">
   <h1 style="color:#272d2d">Notes</h1>
-  <input type="text" id="search"class="form-control" placeholder="Search...">
+  <input type="text" onkeyup="search()" id="searchInput"class="form-control" placeholder="Search...">
   <div class="row" style="height:318px">
     <div class="col-4">
       <div class="card" style="margin-top: 25px;width: 100%;height:100%;max-height: 318px">
@@ -14,7 +14,7 @@
       </div>
     </div>
      {{#each notes}}
-     <div class="col-4">
+     <div class="col-4 note-wrapper">
        <div class="card" style=" margin-top: 25px;height:100%;width: 100%;max-height: 320px">
          <div class="card-body">
            <h3 class="card-title" style="text-transform: capitalize;" >{{name}}</h3>
@@ -102,6 +102,21 @@
   </div>
 </div>
 <script type="text/javascript">
+function search() {
+  input = document.getElementById('searchInput');
+  filter = input.value.toUpperCase();
+  note = document.getElementsByClassName('note-wrapper');
+
+  for (i = 0; i < note.length; i++) {
+    a = note[i].getElementsByClassName('card-title')[0]
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      note[i].style.display = "";
+    } else {
+      note[i].style.display = "none";
+    }
+  }
+}
   $("#nav-notes").addClass("active");
   $("#nav-plans").removeClass("active");
   $("#nav-help").removeClass("active");
